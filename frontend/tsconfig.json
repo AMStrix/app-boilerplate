@@ -32,11 +32,12 @@
 
     "noEmitOnError": false,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "noErrorTruncation": true,
     "pretty": true,
+    "experimentalDecorators": true,
 
     "esModuleInterop": true
   },

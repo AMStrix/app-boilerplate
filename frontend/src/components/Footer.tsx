@@ -1,6 +1,5 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-// import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 import * as csstips from 'csstips';
 
@@ -12,9 +11,6 @@ type Props = RouteComponentProps<any>;
 
 class FooterC extends React.Component<Props> {
   render() {
-    const { pathname } = this.props.location;
-    const pathbase = pathname.split('/')[1] || '/';
-
     return <div className={styles.footer}>{GIT_HASH}</div>;
   }
 }
