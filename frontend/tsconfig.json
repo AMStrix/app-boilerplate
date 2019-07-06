@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "allowJs": true,
+    "strict": true,
+    "baseUrl": "src",
+    "outDir": "dist",
+    "lib": ["dom", "es2017"],
+
+    "moduleResolution": "node",
+
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "allowSyntheticDefaultImports": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "paths": {
+      "src/*": ["./*"],
+      "components/*": ["./components/*"],
+      // "styles/*": ["./styles/*"],
+      // "utils/*": ["./utils/*"],
+      "static/*": ["./static/*"],
+      "backend/*": ["../../backend/src/*"]
+    },
+
+    "noEmitOnError": false,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitThis": true,
+    "noErrorTruncation": true,
+    "pretty": true,
+
+    "esModuleInterop": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./src/static", "**/node_modules/**", "**/dist/**"]
+}
