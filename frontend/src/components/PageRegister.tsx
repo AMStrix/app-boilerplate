@@ -54,6 +54,7 @@ export class PageRegister extends React.Component<{}, State> {
                   e.preventDefault();
                   this.validate(() => {
                     if (!this.state.invalid) {
+                      // tslint:disable-next-line:no-shadowed-variable
                       const { invalid, password2, ...registerData } = this.state;
                       register({ variables: { registerData } });
                     }
