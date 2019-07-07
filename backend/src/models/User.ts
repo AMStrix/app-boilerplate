@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
   BeforeInsert
 } from "typeorm";
-import { ObjectType, Field } from "type-graphql";
+import { ObjectType, Field, ID } from "type-graphql";
 import { ApolloError } from "apollo-server-express";
 
 export enum Roles {
@@ -20,7 +20,7 @@ export enum Roles {
 @ObjectType()
 @Entity("user")
 export class User extends BaseEntity {
-  @Field()
+  @Field(() => ID)
   @PrimaryGeneratedColumn("uuid")
   id: string;
 

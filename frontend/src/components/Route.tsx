@@ -1,21 +1,29 @@
 import React from 'react';
-import { Route as ReactRoute, RouteProps } from 'react-router';
+import { Route as ReactRoute, RouteProps, Redirect } from 'react-router';
 
 import { Roles } from 'backend/models/User';
 import { GqlMe } from 'components/GqlMe';
 
 interface Props extends RouteProps {
   authOnly?: boolean;
-  unauthedOnly?: boolean;
+  guestOnly?: boolean;
   allowedRole?: Roles;
   verifiedOnly?: boolean;
+  failTo?: string;
 }
 
 export class Route extends React.Component<Props> {
   render() {
-    const { unauthedOnly, authOnly, allowedRole, verifiedOnly } = this.props;
+    const { guestOnly, authOnly, allowedRole, verifiedOnly, failTo } = this.props;
     const route = <ReactRoute {...this.props} />;
-    if (unauthedOnly || authOnly || allowedRole || verifiedOnly) {
+    const fail = (reason: string) => {
+      // TODO - dev only
+      console.log(`[${this.props.path}] route failed, reason: ${reason}`);
+      if (failTo) {
+        return <Redirect to={failTo} />;
+      }
+    };
+    if (guestOnly || authOnly || allowedRole || verifiedOnly) {
       return (
         <GqlMe>
           {({ data, loading }) => {
@@ -23,21 +31,17 @@ export class Route extends React.Component<Props> {
               return <>loading...</>;
             }
             if (authOnly && !data) {
-              return <div>TODO: Error, or no data returned.</div>;
+              return fail('no data from ME query');
             }
             if (data) {
-              if (unauthedOnly && data.me) {
-                return (
-                  <div>
-                    TODO: Error, redirect b/c only for unauthed (home page, or profile)
-                  </div>
-                );
+              if (guestOnly && data.me) {
+                return fail('only for guests (unauthed)');
               }
               if (allowedRole && data.me.role > allowedRole) {
-                return <div>TODO: Error, or redirect b/c of insufficient role</div>;
+                return fail(`only for users with roles: ${allowedRole}`);
               }
               if (verifiedOnly && !data.me.verified) {
-                return <div>TODO: Error, or redirect b/c not verified</div>;
+                return fail(`only for verifed users`);
               }
             }
             return route;

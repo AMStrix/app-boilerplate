@@ -22,20 +22,20 @@ if (!fs.existsSync(backendSrc)) {
 
 // GIT HASH
 let gitHash = 'none';
+let gitSuffix = '';
 
 try {
-  const dirtyCode = child
-    .execSync('git diff --quiet HEAD')
-    .toString()
-    .replace('\n', '');
-  // console.log('dirtyCode', dirtyCode);
-  gitHash = child
-    .execSync('git rev-parse HEAD')
-    .toString()
-    .replace('\n', '');
-  if (dirtyCode) {
-    gitHash += '-dirty';
-  }
+  child.execSync('git diff --quiet HEAD');
+} catch (err) {
+  gitSuffix = '-dirty';
+}
+
+try {
+  gitHash =
+    child
+      .execSync('git rev-parse HEAD')
+      .toString()
+      .replace('\n', '') + gitSuffix;
 } catch (err) {
   console.log(`Problem getting last commit hash, make sure git is installed`);
   console.error(err);
