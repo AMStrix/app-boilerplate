@@ -1,6 +1,8 @@
 import React from 'react';
 import { style } from 'typestyle';
 import { GqlLogout } from './GqlLogout';
+import { ME } from './GqlMe';
+import { MutationFn } from 'react-apollo';
 
 const s = {
   root: style({
@@ -30,9 +32,9 @@ export const PageLogout: React.FC = () => (
 );
 
 // just a way to call a mutation on mount
-class CallLogout extends React.Component<{ logout: () => void }> {
+class CallLogout extends React.Component<{ logout: MutationFn }> {
   componentDidMount() {
-    this.props.logout();
+    this.props.logout({ refetchQueries: [{ query: ME }] });
   }
   render() {
     return null;

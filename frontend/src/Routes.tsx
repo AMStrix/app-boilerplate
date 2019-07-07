@@ -36,7 +36,7 @@ class RoutesNaked extends React.Component<Props> {
             component={PageLogin}
           />
           <Route path="/register" guestOnly exact component={PageRegister} />
-          <Route path="/logout" guestOnly exact component={PageLogout} />
+          <Route path="/logout" authOnly exact component={PageLogout} />
           <Route path="/users" authOnly exact component={PageUsers} />
           <Route path="/dashboard" authOnly exact component={PageDashboard} />
           {/* <Route path="/import" exact component={PageImport} />

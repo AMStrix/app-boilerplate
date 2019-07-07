@@ -21,6 +21,8 @@ export class Route extends React.Component<Props> {
       console.log(`[${this.props.path}] route failed, reason: ${reason}`);
       if (failTo) {
         return <Redirect to={failTo} />;
+      } else {
+        return <>This Route [{this.props.path}] shuould have the failTo path set.</>;
       }
     };
     if (guestOnly || authOnly || allowedRole || verifiedOnly) {
@@ -30,8 +32,8 @@ export class Route extends React.Component<Props> {
             if (loading) {
               return <>loading...</>;
             }
-            if (authOnly && !data) {
-              return fail('no data from ME query');
+            if (authOnly && (!data || !data.me)) {
+              return fail('not authed');
             }
             if (data) {
               if (guestOnly && data.me) {
