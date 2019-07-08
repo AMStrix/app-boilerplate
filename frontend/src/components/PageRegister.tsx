@@ -1,14 +1,15 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
 import { Card } from 'components/Card';
 import { Input } from 'components/Input';
+import { Button } from 'components/Button';
 
 import { RegisterInput, RegisterVariables } from 'backend/resolvers/user/registerInput';
 import { User } from 'src/../../backend/src/models/User';
-import { Link } from 'react-router-dom';
 
 const REGISTER = gql`
   mutation Register($registerData: RegisterInput!) {
@@ -61,8 +62,9 @@ export class PageRegister extends React.Component<{}, State> {
                   });
                 }}
               >
-                Login
+                Register
                 <Input
+                  autoFocus
                   value={email}
                   onChange={({ target: { value } }) =>
                     this.setState({ email: value }, this.validate)
@@ -94,9 +96,9 @@ export class PageRegister extends React.Component<{}, State> {
                   placeholder="Verify password"
                   autoComplete="off"
                 />
-                <button disabled={loading} type="submit">
+                <Button disabled={loading} type="submit">
                   Register
-                </button>
+                </Button>
                 {/* TODO - error interpretation, form input errors from server */}
                 {error && <div>{error.message}</div>}
                 {invalid && <div>{invalid}</div>}

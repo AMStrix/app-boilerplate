@@ -11,6 +11,7 @@ import { ME } from 'components/GqlMe';
 import { LoginInput, LoginVariables } from 'backend/resolvers/user/loginInput';
 import { User } from 'src/../../backend/src/models/User';
 import { Link } from 'react-router-dom';
+import { Button } from './Button';
 
 const LOGIN = gql`
   mutation Login($loginData: LoginInput!) {
@@ -56,6 +57,7 @@ export class PageLogin extends React.Component<{}, LoginInput> {
               >
                 Login
                 <Input
+                  autoFocus
                   value={email}
                   onChange={({ target: { value } }) => this.setState({ email: value })}
                   icon="user"
@@ -70,9 +72,9 @@ export class PageLogin extends React.Component<{}, LoginInput> {
                   placeholder="Password"
                   autoComplete="off"
                 />
-                <button disabled={loading} type="submit">
+                <Button disabled={loading} type="submit">
                   Log In
-                </button>
+                </Button>
                 {/* TODO - error interpretation, form input errors from server */}
                 {error && <div>{error.message}</div>}
               </form>

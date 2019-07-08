@@ -1,6 +1,8 @@
 import React, { InputHTMLAttributes } from 'react';
 import { style, classes } from 'typestyle';
+import { rem } from 'csx';
 
+import { controls } from './css';
 import { Icon, IconType } from './Icon';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
@@ -11,7 +13,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 const s = {
   root: style({
     position: 'relative',
-    marginBottom: '1rem',
+    marginBottom: rem(controls.spacing),
   }),
   label: style({
     display: 'none',
@@ -20,16 +22,16 @@ const s = {
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: '0.6rem',
+    padding: rem(controls.height * 0.3),
     zIndex: 1,
   }),
   input: style({
-    padding: '0.5rem',
-    fontSize: '14px',
+    padding: rem(controls.height * (0.55 / 2)),
+    fontSize: rem(controls.height * 0.45),
     width: '100%',
   }),
   inputWithIcon: style({
-    paddingLeft: '2rem',
+    paddingLeft: rem(2 * 1),
   }),
 };
 
