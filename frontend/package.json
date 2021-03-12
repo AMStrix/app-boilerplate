@@ -65,7 +65,7 @@
     "rc-pagination": "^1.20.1",
     "react": "16.8.6",
     "react-apollo": "^2.5.8",
-    "react-dev-utils": "^5.0.2",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "npm:@hot-loader/react-dom",
     "react-hot-loader": "^4.8.4",
     "react-router": "^4.3.1",
