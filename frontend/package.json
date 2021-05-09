@@ -56,7 +56,7 @@
     "https-proxy": "^0.0.2",
     "husky": "^1.0.0-rc.8",
     "keccakjs": "^0.2.3",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.22.2",
     "prettier": "^1.13.4",
