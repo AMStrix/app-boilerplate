@@ -58,7 +58,7 @@
     "keccakjs": "^0.2.3",
     "lodash": "^4.17.10",
     "lodash.throttle": "^4.1.1",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "prettier": "^1.13.4",
     "prettier-package-json": "^1.6.0",
     "query-string": "6.1.0",
